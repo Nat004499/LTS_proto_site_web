@@ -129,3 +129,27 @@ export function computeStats(series) {
 function round(v) {
   return Math.round(v * 1000) / 1000
 }
+
+// Helper pour créer un appareil à la volée (utilisé par "Ajouter" dans l'UI)
+export function createDevice({ id, location, model = 'Vibrating Wire — VW-3D' }) {
+  const rndSerial = `FM${Math.floor(100 + Math.random() * 900)}-${String(
+    Math.floor(Math.random() * 100_000_000)
+  ).padStart(8, '0')}`
+  return {
+    id,
+    serial: rndSerial,
+    model,
+    location: location || '—',
+    installedOn: new Date().toISOString().slice(0, 10),
+    threshold: 15,
+    icon: 'caliper',
+    series: genSeries({
+      days: 220,
+      baseline: (Math.random() - 0.5) * 10,
+      drift: (Math.random() - 0.5) * 0.02,
+      amplitude: 1 + Math.random() * 4,
+      noise: 0.5,
+      seed: Math.floor(Math.random() * 10_000),
+    }),
+  }
+}

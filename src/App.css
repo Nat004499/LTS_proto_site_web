@@ -95,11 +95,13 @@
 .devices-toolbar {
   padding: 10px 14px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  flex-direction: column;
+  gap: 10px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-1);
+}
+.devices-toolbar > div {
+  justify-content: flex-end;
 }
 .btn {
   background: var(--bg-3);
