@@ -75,7 +75,7 @@ export default function App() {
           <span className="brand-mark" />
           <span>FISSURO MONITOR · v0.1</span>
         </div>
-        <div className="user">L. Contino — Session 12.05.2026</div>
+        <div className="user">S. Kilchör — Session 12.05.2026</div>
       </header>
 
       <nav className="sidebar">
