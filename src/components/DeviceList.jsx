@@ -129,7 +129,7 @@ export default function DeviceList({
               </div>
               <div className="value">
                 <span className="mono">{stats.current.toFixed(2)}</span>
-                <span className="unit">μm</span>
+                <span className="unit">mm</span>
                 <span className={`dot ${status}`} />
               </div>
             </div>

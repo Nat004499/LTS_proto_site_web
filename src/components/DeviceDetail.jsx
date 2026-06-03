@@ -62,18 +62,18 @@ export default function DeviceDetail({ device, onExportOne }) {
       {tab === 'overview' && (
         <>
           <div className="stats-grid">
-            <Stat label="Mesure actuelle" value={fmt(stats.current)} unit="μm"
-                  trend={`${trendArrow(stats.delta24h)} ${fmt(stats.delta24h)} μm / 24 h`}
+            <Stat label="Mesure actuelle" value={fmt(stats.current)} unit="mm"
+                  trend={`${trendArrow(stats.delta24h)} ${fmt(stats.delta24h)} mm / 24 h`}
                   trendType={trendClass(stats.delta24h)} />
-            <Stat label="Valeur max" value={fmt(stats.max)} unit="μm" />
-            <Stat label="Valeur min" value={fmt(stats.min)} unit="μm" />
-            <Stat label="Amplitude totale" value={fmt(stats.range)} unit="μm" />
-            <Stat label="Moyenne (220 j)" value={fmt(stats.mean)} unit="μm" />
-            <Stat label="Écart-type" value={fmt(stats.std)} unit="μm" />
-            <Stat label="Dérive linéaire" value={fmt(stats.slopePerMonth, 3)} unit="μm / mois"
-                  trend={`${fmt(stats.slopePerDay, 4)} μm / jour`}
+            <Stat label="Valeur max" value={fmt(stats.max)} unit="mm" />
+            <Stat label="Valeur min" value={fmt(stats.min)} unit="mm" />
+            <Stat label="Amplitude totale" value={fmt(stats.range)} unit="mm" />
+            <Stat label="Moyenne (220 j)" value={fmt(stats.mean)} unit="mm" />
+            <Stat label="Écart-type" value={fmt(stats.std)} unit="mm" />
+            <Stat label="Dérive linéaire" value={fmt(stats.slopePerMonth, 3)} unit="mm / mois"
+                  trend={`${fmt(stats.slopePerDay, 4)} mm / jour`}
                   trendType={trendClass(stats.slopePerDay)} />
-            <Stat label="Seuil d'alerte" value={fmt(device.threshold, 1)} unit="μm" />
+            <Stat label="Seuil d'alerte" value={fmt(device.threshold, 1)} unit="mm" />
           </div>
 
           <ChartPanel device={device} stats={stats} />
@@ -91,13 +91,13 @@ export default function DeviceDetail({ device, onExportOne }) {
         <div className="panel">
           <div className="panel-header">
             <h3>Mesures récentes</h3>
-            <span className="meta">30 derniers points · μm</span>
+            <span className="meta">30 derniers points · mm</span>
           </div>
           <table className="table">
             <thead>
               <tr>
                 <th>Date</th>
-                <th className="num">Mesure (μm)</th>
+                <th className="num">Mesure (mm)</th>
                 <th className="num">Δ vs précédent</th>
                 <th className="num">Température (°C)</th>
                 <th>Statut</th>
@@ -150,7 +150,7 @@ function ChartPanel({ device, stats, large }) {
     <div className="panel">
       <div className="panel-header">
         <h3>Évolution de la fissure</h3>
-        <span className="meta">μm · 220 derniers jours</span>
+        <span className="meta">mm · 220 derniers jours</span>
       </div>
       <div style={{ width: '100%', height: large ? 380 : 280 }}>
         <ResponsiveContainer>
@@ -187,7 +187,7 @@ function ChartPanel({ device, stats, large }) {
               }}
               labelStyle={{ color: 'var(--text-1)' }}
               itemStyle={{ color: '#f5c518' }}
-              formatter={(v) => [`${v.toFixed(2)} μm`, 'Mesure']}
+              formatter={(v) => [`${v.toFixed(2)} mm`, 'Mesure']}
             />
             <ReferenceLine
               y={device.threshold}

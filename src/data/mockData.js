@@ -1,5 +1,5 @@
 // Génération de données mock pour les fissuromètres.
-// Chaque appareil a une série temporelle (μm vs date) avec dérive,
+// Chaque appareil a une série temporelle (mm vs date) avec dérive,
 // saisonnalité et bruit, pour ressembler à des relevés réels.
 
 function genSeries({ days = 180, baseline = 0, drift = 0, amplitude = 5, noise = 0.4, seed = 1 }) {
@@ -105,7 +105,7 @@ export function computeStats(series) {
   const current = values[n - 1]
   const previous = values[n - 2] ?? current
   const delta24h = current - previous
-  // Régression linéaire simple : pente en μm / jour
+  // Régression linéaire simple : pente en mm / jour
   const xs = series.map((_, i) => i)
   const xMean = xs.reduce((a, b) => a + b, 0) / n
   const num = xs.reduce((acc, x, i) => acc + (x - xMean) * (values[i] - mean), 0)
